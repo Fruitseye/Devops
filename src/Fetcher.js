@@ -8,6 +8,7 @@ class Secpage extends React.Component{
     Characters:[],
     endpoint : "/welcome"
   }
+  //////Fetching of data//////////
   async componentDidMount(){
     axios.get("https://saarang2021aspirers.herokuapp.com"+this.state.endpoint)
     .then(res=>{
@@ -34,7 +35,7 @@ class Secpage extends React.Component{
             })
           }))
 }
-
+/////////////////////////////////////
   render(){
 console.log(this.state)
     return(

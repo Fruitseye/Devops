@@ -5,7 +5,7 @@ class NextPage extends React.Component{
   render(){
     const details=this.props.Ch.map(CH=>{
       return(
-
+//////////Characters listing//////////////
         <div className="ListofCharacters">
         <ol className="rectangle-list">
         <li><a href="">Name:{CH.name}</a></li>
@@ -14,7 +14,7 @@ class NextPage extends React.Component{
       </div>
     )
     })
-    return(
+    return(//////////Outputting Favourites///////////
       <div className="AllItems">
       <h2 className="Movie">{this.props.Mo}</h2>
       <h2 className="Tv">{this.props.Tv}</h2>

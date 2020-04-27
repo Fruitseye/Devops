@@ -2,6 +2,8 @@ import React from 'react';
 import './formstyle.css';
 import {withRouter} from 'react-router-dom';
 
+////////////////Validators///////////////
+
 const validNameRegex=RegExp(/^[A-Za-z]+$/);
 const validEmailRegex=RegExp(/^[a-zA-Z]{2}[0-9]{2}[A-Za-z][0-9]{3}@smail\.iitm\.ac\.in$/);
 const validRollNoRegex=RegExp(/^[A-Za-z]{2}[0-9]{2}[BCDMbcdm][0-9]{3}$/);
@@ -15,6 +17,8 @@ Object.values(errors).forEach(
 );
 return valid;
 }
+//////////////////////////////////////////
+
 class Form extends React.Component{
   constructor(props){
     super(props);
@@ -36,7 +40,7 @@ class Form extends React.Component{
   };}
 
 
-////////////////////////////////////////
+//////////Handling changes and using validators/////////////
   handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -90,7 +94,7 @@ class Form extends React.Component{
 
     })
   }
-///////////////////////////////////////////////////
+/////////////Submit to move to next page///////////////////////
 handleSubmit = (event) => {
   event.preventDefault();
   if(validateForm(this.state.errors)) {
@@ -101,53 +105,62 @@ handleSubmit = (event) => {
   }
 }
 
-
+//////////////Form///////////////////
   render(){
     const {errors}=this.state
     return(
       <div className='wrapper'>
               <div className='form-wrapper'>
                 <h2>Welcome!!Register Here :)</h2>
+
                 <form onSubmit={this.handleSubmit.bind(this)} noValidate >
-                  <div className=''>
+
+                  <div className='fullName'>
                     <label htmlFor="fullName">Full Name</label><br/>
                     <input type='text' name='fullName' onChange={this.handleChange} noValidate />
                     {errors.fullName.length > 0 &&
                       <span className='error'>{errors.fullName}</span>}
                   </div>
+
                   <div className='rollno'>
                   <label htmlFor="rollno">Roll No</label><br/>
                   <input type='text' name='rollno' onChange={this.handleChange} noValidate/>
                   {errors.rollno.length > 0 &&
                       <span className='error'>{errors.rollno}</span>}
                   </div>
+
                   <div className='contact'>
                   <label htmlFor="contact">Contact</label><br/>
                   <input type='text' name='contact' onChange={this.handleChange} noValidate/>
                   {errors.contact.length > 0 &&
                       <span className='error'>{errors.contact}</span>}
                   </div>
+
                   <div className='email'>
                     <label htmlFor="email">Email</label>
                     <input type='email' name='email' onChange={this.handleChange} noValidate />
                     {errors.email.length > 0 &&
                         <span className='error'>{errors.email}</span>}
                   </div>
+
                   <div className='password'>
                     <label htmlFor="password">Password</label>
                     <input type='password' name='password' onChange={this.handleChange} noValidate />
                     {errors.password.length > 0 &&
                         <span className='error'>{errors.password}</span>}
                   </div>
+
                   <div className='confirmpassword'>
                     <label htmlFor="confirmpassword">Confirm Password</label><br/>
                     <input type='password' name='confirmpassword' onChange={this.handleChange} noValidate />
                     {errors.confirmpassword.length > 0 &&
                         <span className='error'>{errors.confirmpassword}</span>}
                   </div>
+
                   <div className='submit'>
                     <button>Enter</button>
                   </div>
+
                 </form>
               </div>
             </div>
